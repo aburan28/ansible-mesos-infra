@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 FROM centos:7
 
 # Install systemd -- See https://hub.docker.com/_/centos/
@@ -24,3 +25,13 @@ RUN if [ ! -d "/etc/ansible" ]; then mkdir /etc/ansible; fi
 RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/usr/sbin/init"]
+=======
+FROM centos
+MAINTAINER "aburan28@gmail.com"
+
+
+
+
+
+
+>>>>>>> 035050a2a2c30f5cfc896de1ef7c5f2a7a27c015
