@@ -1,19 +1,18 @@
-<<<<<<< HEAD
 FROM centos:7
+MAINTAINER "aburan28@gmail.com"
 
-# Install systemd -- See https://hub.docker.com/_/centos/
+
 RUN yum -y swap -- remove fakesystemd -- install systemd systemd-libs
 RUN yum -y update; yum clean all; \
-(cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
-rm -f /lib/systemd/system/multi-user.target.wants/*; \
-rm -f /etc/systemd/system/*.wants/*; \
-rm -f /lib/systemd/system/local-fs.target.wants/*; \
-rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
-rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
-rm -f /lib/systemd/system/basic.target.wants/*; \
-rm -f /lib/systemd/system/anaconda.target.wants/*;
+    (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+    rm -f /lib/systemd/system/multi-user.target.wants/*; \
+    rm -f /etc/systemd/system/*.wants/*; \
+    rm -f /lib/systemd/system/local-fs.target.wants/*; \
+    rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+    rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+    rm -f /lib/systemd/system/basic.target.wants/*; \
+    rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-# Install Ansible
 RUN yum -y install epel-release
 RUN yum -y install git sudo
 RUN yum -y install python-pip python-setuptools python-crypto
@@ -25,13 +24,3 @@ RUN if [ ! -d "/etc/ansible" ]; then mkdir /etc/ansible; fi
 RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/usr/sbin/init"]
-=======
-FROM centos
-MAINTAINER "aburan28@gmail.com"
-
-
-
-
-
-
->>>>>>> 035050a2a2c30f5cfc896de1ef7c5f2a7a27c015
