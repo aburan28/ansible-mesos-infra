@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  roles:
+    - packages
+    - docker
+    - zookeeper
+    - mesos
+    - marathon
